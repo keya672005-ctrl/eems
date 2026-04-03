@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal - EEMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./dashboard.css">
+</head>
+<body class="dash-body">
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/index.html" class="logo">EEMS<span>.</span></a>
+        <button class="mobile-close-btn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active"><a href="#"><i class="fas fa-home"></i> Overview</a></li>
+          <li><a href="#"><i class="fas fa-compass"></i> Event Catalog</a></li>
+          <li><a href="#"><i class="fas fa-calendar-check"></i> My Schedule</a></li>
+          <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <ul>
+          <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="/index.html" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Application Area -->
+    <main class="main-content">
+      
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <button class="menu-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+        
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search events, organizers, or topics...">
+        </div>
+        
+        <div class="topbar-actions">
+          <button class="action-icon"><i class="fas fa-bell"></i><span class="badge">2</span></button>
+          <div class="user-profile">
+            <img src="https://ui-avatars.com/api/?name=Emma+Student&background=5c6ac4&color=fff" alt="User Avatar">
+            <div class="user-info">
+              <span class="user-name">Emma Student</span>
+              <span class="user-role">Computer Science</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content View -->
+      <div class="content-view fade-in animate">
+        
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Welcome back, Emma!</h1>
+            <p class="page-subtitle">You have 2 upcoming events this week.</p>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          
+          <!-- Next Upcoming Event Card -->
+          <div class="dash-card featured-event">
+            <div class="card-header">
+              <h3>Next Upcoming Event</h3>
+              <span class="status-badge upcoming">Starts in 2 Days</span>
+            </div>
+            <div class="featured-event-content">
+              <div class="event-icon bg-primary"><i class="fas fa-laptop-code"></i></div>
+              <div class="event-details">
+                <h2>Annual Hackathon 2026</h2>
+                <p>Organized by CS Department</p>
+                <div class="event-meta">
+                  <span><i class="far fa-calendar-alt"></i> April 4, 2026</span>
+                  <span><i class="far fa-clock"></i> 09:00 AM - 05:00 PM</span>
+                  <span><i class="fas fa-map-marker-alt"></i> Innovation Lab, Tech Building</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-outline">View Details</button>
+              <button class="btn btn-primary"><i class="fas fa-qrcode"></i> View Ticket</button>
+            </div>
+          </div>
+
+          <!-- Quick Stats & Modules -->
+          <div class="stats-column">
+            <div class="stat-card box-shadow">
+              <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+              <div class="stat-info">
+                <h4>Registered</h4>
+                <h2>4 Events</h2>
+              </div>
+            </div>
+            <div class="stat-card box-shadow">
+              <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+              <div class="stat-info">
+                <h4>Certificates Earned</h4>
+                <h2>12</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sections-grid">
+          <!-- Recommended Events -->
+          <div class="section-card">
+            <div class="card-header-flex">
+              <h2>Recommended for You</h2>
+              <a href="#" class="view-all">View Catalog <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="event-list">
+              <!-- Event Item -->
+              <div class="event-item">
+                <div class="event-date-box">
+                  <span class="month">APR</span>
+                  <span class="day">10</span>
+                </div>
+                <div class="event-info">
+                  <h4>AI & Machine Learning Seminar</h4>
+                  <p>Guest Speaker: Dr. Alan Turing</p>
+                </div>
+                <button class="btn btn-outline btn-small">Register</button>
+              </div>
+              
+              <!-- Event Item -->
+              <div class="event-item">
+                <div class="event-date-box">
+                  <span class="month">APR</span>
+                  <span class="day">18</span>
+                </div>
+                <div class="event-info">
+                  <h4>Career Fair Spring 2026</h4>
+                  <p>Connect with 50+ Tech Companies</p>
+                </div>
+                <button class="btn btn-outline btn-small">Register</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Certificates -->
+          <div class="section-card">
+            <div class="card-header-flex">
+              <h2>Recent Certificates</h2>
+              <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="cert-list">
+              <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <h4>Web Development Workshop</h4>
+                  <p>Completed: Mar 15, 2026</p>
+                </div>
+                <button class="action-icon" title="Download"><i class="fas fa-download"></i></button>
+              </div>
+              
+              <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <h4>Leadership Summit</h4>
+                  <p>Completed: Feb 28, 2026</p>
+                </div>
+                <button class="action-icon" title="Download"><i class="fas fa-download"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Simple sidebar toggle logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const close = document.querySelector('.mobile-close-btn');
+      const sidebar = document.querySelector('.sidebar');
+      
+      toggle.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+      
+      close.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

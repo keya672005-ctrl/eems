@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - EEMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(92, 106, 196, 0.05), rgba(0, 122, 255, 0.05));
+    }
+    .auth-container {
+      width: 100%;
+      max-width: 900px;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      overflow: hidden;
+      margin: 2rem;
+    }
+    .auth-form-side {
+      flex: 1;
+      padding: 4rem;
+    }
+    .auth-visual-side {
+      flex: 1;
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-visual-side h2 {
+      color: white;
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .auth-visual-side p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 2;
+      margin-top: 1rem;
+    }
+    .auth-visual-side::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transform: scale(2);
+    }
+    .logo-container {
+      margin-bottom: 3rem;
+    }
+    .logo-container a {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+    }
+    .logo-container span { color: var(--clr-secondary); }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--clr-text);
+      font-size: 0.95rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      transition: var(--transition);
+      background: var(--clr-bg);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(92, 106, 196, 0.1);
+      background: white;
+    }
+    .auth-form-side h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .auth-form-side > p {
+      color: var(--clr-text-light);
+      margin-bottom: 2.5rem;
+    }
+    .btn-submit {
+      width: 100%;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .auth-switch {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .auth-switch a {
+      color: var(--clr-primary);
+      font-weight: 600;
+    }
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .auth-container { flex-direction: column; }
+      .auth-visual-side { display: none; }
+      .auth-form-side { padding: 3rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container fade-in animate">
+    <div class="auth-form-side">
+      <div class="logo-container">
+        <a href="/index.html">EEMS<span>.</span></a>
+      </div>
+      <h3 id="form-title">Welcome Back</h3>
+      <p id="form-subtitle">Please enter your details to sign in.</p>
+      
+      <form id="authForm" onsubmit="event.preventDefault(); window.location.href='/dashboard.html'">
+        <div class="form-group" id="nameGroup" style="display: none;">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" class="form-control" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="steve@university.edu" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">Sign In</button>
+      </form>
+      
+      <div class="auth-switch">
+        <span id="switch-text">Don't have an account?</span> 
+        <a href="#" id="toggleBtn" onclick="toggleMode(event)">Sign Up</a>
+      </div>
+    </div>
+    
+    <div class="auth-visual-side">
+      <h2>Your Hub for Every Educational Event.</h2>
+      <p>Organize, schedule, and automate attendance and certificates. All from one account.</p>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+    
+    function toggleMode(e) {
+      e.preventDefault();
+      isLogin = !isLogin;
+      
+      const formTitle = document.getElementById('form-title');
+      const formSubtitle = document.getElementById('form-subtitle');
+      const nameGroup = document.getElementById('nameGroup');
+      const submitBtn = document.getElementById('submitBtn');
+      const switchText = document.getElementById('switch-text');
+      const toggleBtn = document.getElementById('toggleBtn');
+      
+      if (isLogin) {
+        formTitle.innerText = "Welcome Back";
+        formSubtitle.innerText = "Please enter your details to sign in.";
+        nameGroup.style.display = "none";
+        document.getElementById('name').removeAttribute('required');
+        submitBtn.innerText = "Sign In";
+        switchText.innerText = "Don't have an account?";
+        toggleBtn.innerText = "Sign Up";
+      } else {
+        formTitle.innerText = "Create Account";
+        formSubtitle.innerText = "Start organizing events in seconds.";
+        nameGroup.style.display = "block";
+        document.getElementById('name').setAttribute('required', 'true');
+        submitBtn.innerText = "Sign Up";
+        switchText.innerText = "Already have an account?";
+        toggleBtn.innerText = "Sign In";
+      }
+    }
+
+    // Simple animation
+    setTimeout(() => {
+      document.querySelector('.auth-container').classList.add('animate');
+    }, 100);
+  </script>
+</body>
+</html>
