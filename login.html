@@ -143,7 +143,7 @@
       <h3 id="form-title">Welcome Back</h3>
       <p id="form-subtitle">Please enter your details to sign in.</p>
       
-      <form id="authForm" onsubmit="event.preventDefault(); window.location.href='/dashboard.html'">
+      <form id="authForm">
         <div class="form-group" id="nameGroup" style="display: none;">
           <label for="name">Full Name</label>
           <input type="text" id="name" class="form-control" placeholder="John Doe">
@@ -203,6 +203,36 @@
         toggleBtn.innerText = "Sign In";
       }
     }
+
+    document.getElementById('authForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const name = document.getElementById('name').value;
+      
+      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+      const payload = isLogin ? { email, password } : { name, email, password };
+      
+      try {
+        const response = await fetch(`http://localhost:3000${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          window.location.href = '/dashboard.html';
+        } else {
+          alert('Error: ' + data.error);
+        }
+      } catch (err) {
+        alert('Failed to connect to the server.');
+      }
+    });
 
     // Simple animation
     setTimeout(() => {
