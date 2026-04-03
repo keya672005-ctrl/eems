@@ -1,25 +1,29 @@
 :root {
-  /* Soft blue, white, purple tone palette */
-  --clr-primary: #5c6ac4;    /* Purple */
-  --clr-primary-light: #7b8ae6;
-  --clr-secondary: #007aff;  /* Soft Blue */
-  --clr-bg: #f8fafc;         /* Off-white */
-  --clr-bg-light: #ffffff;
-  --clr-text: #1e293b;
-  --clr-text-light: #64748b;
+  /* Dark Mode & Neon Color Palette */
+  --clr-primary: #ec4899;    /* Neon Magenta */
+  --clr-primary-light: #f472b6;
+  --clr-secondary: #0ea5e9;  /* Electric Blue */
+  
+  --clr-bg: #0f172a;         /* Deep Slate Base */
+  --clr-bg-light: transparent;
+  
+  --clr-text: #f8fafc;       /* Crisp White text */
+  --clr-text-light: #94a3b8; /* Muted Slate */
   
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
   
-  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.5);
   
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-full: 9999px;
   
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -38,6 +42,17 @@ html {
 body {
   line-height: 1.6;
   overflow-x: hidden;
+  background: linear-gradient(135deg, #1e0b36 0%, #15113d 50%, #06182c 100%);
+  background-attachment: fixed;
+}
+
+/* Glass Utility System */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 h1, h2, h3, h4 {
@@ -229,6 +244,7 @@ ul {
 
 .highlight {
   background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
